@@ -1,0 +1,32 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Mapa</ion-title>
+    </ion-navbar>
+    <ion-toolbar color="primary">
+        <ion-searchbar color="dark" debounce="2000"
+                       placeholder="Informe o endereço"
+                       (ionInput)="onSearchAddress($event)"></ion-searchbar>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="no-scroll">
+    <div id="map" class="map" #map showWhen="android,ios">
+        <div *ngIf="searching" class="spinner-container">
+            <ion-spinner></ion-spinner>
+        </div>
+    </div>
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar color="secondary" text-center>
+        <button ion-button outline (click)="onMyLocationButtonTapped()">
+            Minha Localização
+        </button>
+        <button ion-button outline (click)="onUseThisLocationButtonTapped()">
+            Usar Esta Localização
+        </button>
+    </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Checkout</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content color="dark" class="no-scroll">
+  <ion-list>
+    <form (ngSubmit)="onSubmit()" novalidate>
+      <ion-item>
+        <ion-icon name="contact" item-left color="primary"></ion-icon>
+        <ion-label color="primary">Nome</ion-label>
+        <ion-input type="text" name="customer" [(ngModel)]="order.customer"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="card" item-left color="primary"></ion-icon>
+        <ion-label color="primary">Forma de Pagamento</ion-label>
+        <ion-select [cancelText]="cancelButtonText" name="paymentMethod" [(ngModel)]="order.paymentMethod">
+          <ion-option *ngFor="let paymentMethod of paymentMethods" [value]="paymentMethod">
+            {{ paymentMethod.title }}
+          </ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="cash" item-left color="primary"></ion-icon>
+        <ion-label color="primary">Troco Para</ion-label>
+        <ion-input type="number" [(ngModel)]="order.change" name="change"
+                   (input)="updateOrderChange()"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="pin" item-left color="primary"></ion-icon>
+        <ion-label color="primary">Endereço</ion-label>
+        <ion-input type="text" name="address" value="{{deliveryAddress.deliveryAddress}}" disabled
+                   (click)="defineDestinationAddress()">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="home" item-left color="primary"></ion-icon>
+        <ion-label color="primary">Nº</ion-label>
+        <ion-input type="text" name="addressNumber" [(ngModel)]="order.addressNumber"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="call" item-left color="primary"></ion-icon>
+        <ion-label color="primary">Telefone</ion-label>
+        <ion-input type="tel" [(ngModel)]="order.phone" name="phone"></ion-input>
+      </ion-item>
+
+      <div padding>
+        <button type="submit" ion-button block>
+          Enviar Pedido
+        </button>
+      </div>
+    </form>
+  </ion-list>
+  <ion-card>
+    <ion-card-content>
+      <ion-card-title color="light">
+        <ion-icon name="cash" item-left color="primary"></ion-icon>
+        Troco: R$ {{order.changeNeeded | number : '1.2-2'}}
+      </ion-card-title>
+      <ion-list>
+        <ion-item>
+          <p>Valor Total: R$ {{cart.total | number : '1.2-2'}}</p>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

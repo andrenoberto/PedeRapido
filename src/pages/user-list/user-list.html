@@ -1,0 +1,58 @@
+<ion-header>
+
+    <ion-navbar color="primary">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Usuários</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="no-scroll">
+    <ion-list no-lines>
+        <ion-item class="slideNote">
+            <ion-icon name="arrow-round-back" class="slideNoteIcon"></ion-icon>
+            Deslize para exibir as opções.
+        </ion-item>
+        <ion-item-sliding *ngFor="let user of users | async">
+            <ion-item>
+                <h2>{{user.name}}</h2>
+                <p>Login: {{user.username}}</p>
+                <p>
+                    Permissões administrativas:
+                    <span *ngIf="user.admin">sim</span>
+                    <span *ngIf="!user.admin">não</span>
+                </p>
+                <p>
+                    Entrega de produtos:
+                    <span *ngIf="user.deliveryman">sim</span>
+                    <span *ngIf="!user.deliveryman">não</span>
+                </p>
+            </ion-item>
+            <ion-item-options side="right">
+                <button ion-button color="light" (click)="showOptions(user)">
+                    <ion-icon name="more"></ion-icon>
+                    Mais
+                </button>
+                <button ion-button color="danger" (click)="removeUser(user.$key)">
+                    <ion-icon name="trash"></ion-icon>
+                    Excluir
+                </button>
+                <button ion-button color="primary" (click)="updateUser(user)">
+                    <ion-icon name="hammer"></ion-icon>
+                    Editar
+                </button>
+            </ion-item-options>
+        </ion-item-sliding>
+    </ion-list>
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar color="secondary" text-center>
+        <button ion-button outline (click)="addUser()">
+            + Usuário
+        </button>
+    </ion-toolbar>
+</ion-footer>

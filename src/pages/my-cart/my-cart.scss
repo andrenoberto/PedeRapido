@@ -1,0 +1,25 @@
+page-my-cart {
+  ion-item {
+    &:first-child {
+      border-top: none !important;
+    }
+
+    &:last-child {
+      border-bottom: none !important;
+    }
+
+    ion-avatar img {
+      max-width: 6rem !important;
+      max-height: 6rem !important;
+      border-radius: 4rem !important;
+    }
+  }
+
+  ion-row {
+    background: color($colors, secondary, base);
+
+    h2 {
+      margin-top: 0;
+    }
+  }
+}

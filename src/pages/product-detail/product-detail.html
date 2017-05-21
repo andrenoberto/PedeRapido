@@ -1,0 +1,29 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <ion-title *ngIf="product">Adicionar ao carrinho</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding class="no-scroll">
+    <ion-card *ngIf="product">
+        <ion-card-content>
+            <ion-card-title color="light">{{product.name}}</ion-card-title>
+            <ion-list>
+                <ion-item>
+                    <ion-icon name="pricetag" item-left></ion-icon>
+                    <p>Valor unitário: R$ {{product.value}}</p>
+                </ion-item>
+                <ion-item>
+                    <ion-label floating="">Quantidade</ion-label>
+                    <ion-input type="number" value="1" min="1" [(ngModel)]="product.amount"
+                               (input)="updateTotalValue()"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-icon name="information-circle" item-left></ion-icon>
+                    <p>Valor total: R$ {{product.total | number : '1.2-2'}}</p>
+                </ion-item>
+            </ion-list>
+        </ion-card-content>
+    </ion-card>
+    <button ion-button round type="button" (click)="addToCart()">+ Carrinho</button>
+</ion-content>

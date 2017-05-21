@@ -1,0 +1,38 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Lista de Produtos</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="addProduct()">
+                <ion-icon name="add"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="no-scroll">
+    <ion-list no-lines>
+        <ion-item class="slideNote">
+            <ion-icon name="arrow-round-back" class="slideNoteIcon"></ion-icon>
+            Deslize para exibir as opções.
+        </ion-item>
+        <ion-item-sliding *ngFor="let product of products | async">
+            <ion-item>
+                <h2>{{product.name}}</h2>
+                <p>R$ {{product.value}}</p>
+            </ion-item>
+            <ion-item-options side="right">
+                <button ion-button color="light" (click)="showOptions(product.$key, product.name, product.value)">
+                    <ion-icon name="more"></ion-icon>
+                    Mais
+                </button>
+                <button ion-button color="primary" (click)="orderProduct(product.$key, product.name, product.value)">
+                    <ion-icon name="cart"></ion-icon>
+                    Comprar
+                </button>
+            </ion-item-options>
+        </ion-item-sliding>
+    </ion-list>
+</ion-content>

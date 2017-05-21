@@ -1,0 +1,29 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Perfil do Usuário</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content color="dark" class="no-scroll">
+    <ion-card color="light" *ngIf="this.platform.is('cordova')">
+        <img src="{{profile.photo}}"/>
+        <ion-card-content>
+            <ion-card-title>
+                {{profile.name}}
+            </ion-card-title>
+            <p>
+                {{profile.email}}
+            </p>
+            <p *ngIf="profile.provider">
+                <ion-icon name="logo-facebook" item-left></ion-icon>
+                Conectado com o {{profile.provider}}
+            </p>
+        </ion-card-content>
+    </ion-card>
+    <div>
+        <button ion-button class="button button-full" (click)="logout()">Log out</button>
+    </div>
+</ion-content>

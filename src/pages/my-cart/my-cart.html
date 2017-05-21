@@ -1,0 +1,43 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Meu carrinho</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="no-scroll">
+  <ion-card>
+    <ion-card-content>
+      <ion-card-title color="light">Valor Total: R$ {{cart.total | number : '1.2-2'}}</ion-card-title>
+      <ion-list>
+        <ion-list-header color="secondary">
+          Detalhes do Pedido
+        </ion-list-header>
+        <ion-item *ngIf="cart.total <= 0">
+          <p>O seu carrinho de compras está vazio!</p>
+        </ion-item>
+        <ion-item *ngFor="let o of cart.items">
+          {{o.amount}} x {{o.name}}
+          <p>Valor unitário: R$ {{o.value | number: '1.2-2'}}</p>
+          <p>Subtotal: R$ {{o.total | number: '1.2-2'}}</p>
+          <ion-buttons>
+            <button ion-button small outline item-right icon-left (click)="updateProduct(o.key, o.amount)">
+              <ion-icon name="create"></ion-icon>
+              Editar
+            </button>
+            <button ion-button small outline item-right icon-left (click)="removeProductFromCart(o.key)">
+              <ion-icon name="trash"></ion-icon>
+              Remover
+            </button>
+          </ion-buttons>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  <button ion-button round (click)="goToCheckout()" *ngIf="cart.items.length > 0">Realizar Pedido</button>
+</ion-content>

@@ -1,0 +1,28 @@
+page-user-list {
+  ion-item {
+    border-bottom: solid 1px #ececec !important;
+    //border-top: solid 1px #fff!important;
+
+    /*&:first-child {
+      border-top: solid 1px #fff !important;
+    }
+
+    &:last-child {
+      border-bottom: solid 1px #C8C8C8 !important;
+    }*/
+
+    ion-avatar img {
+      max-width: 6rem !important;
+      max-height: 6rem !important;
+      border-radius: 4rem !important;
+    }
+  }
+
+  .slideNote {
+    text-align: center !important;
+  }
+
+  .slideNoteIcon {
+    vertical-align: bottom !important;
+  }
+}
