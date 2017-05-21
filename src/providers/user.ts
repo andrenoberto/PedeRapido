@@ -20,11 +20,11 @@ export class User {
             this.oauthService.getProfile()
                 .then(profile => {
                     this.profile = profile;
-                    this.profileMenu.autoChangeStatus();
+                    this.profileMenu.autoChangeStatus(true);
+                    alert('Status: ' + this.profileMenu.userOnlineStatus);
                 }).catch(error => {
                 //alert(error)
             });
         }
     }
-
 }

@@ -12,6 +12,7 @@ import {MyCart} from "../pages/my-cart/my-cart";
 import {OrderDone} from "../pages/order-done/order-done";
 import {UserList} from "../pages/user-list/user-list";
 import {MyOrders} from "../pages/my-orders/my-orders";
+import {ProfileMenu} from "../providers/profile-menu";
 
 @Component({
     templateUrl: 'app.html'
@@ -34,7 +35,7 @@ export class MyApp {
                 private splashScreen: SplashScreen,
                 private events: Events,
                 private user: User,
-                private menuCtrl: MenuController,
+                private profileMenu: ProfileMenu,
                 private app: App) {
         this.initializeApp();
     }
@@ -56,9 +57,15 @@ export class MyApp {
             {title: 'Meu Carrinho', component: MyCart, icon: 'cart'},
             {title: 'Meus Pedidos', component: MyOrders, icon: 'cube'}
         ];
-        this.profilePages = [
-            {title: 'Meu Perfil', component: Profile, icon: 'contact'},
-        ];
+        if (this.profileMenu.userOnlineStatus) {
+            this.profilePages = [
+                {title: 'Meu Perfil', component: Profile, icon: 'contact'},
+            ];
+        } else {
+            this.profilePages = [
+                {title: 'Conectar-se', component: OAuthProvidersListPage, icon: 'log-in'},
+            ];
+        }
         this.adminPages = [
             {title: 'Pedido Realizado', component: OrderDone, icon: 'home'},
             {title: 'Usuários', component: UserList, icon: 'people'},

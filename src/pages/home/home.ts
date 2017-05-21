@@ -15,8 +15,6 @@ export class HomePage {
 
     constructor(private navCtrl: NavController,
                 private platform: Platform,
-                private app: App,
-                private profileMenu: ProfileMenu,
                 private menuCtrl: MenuController) {
         this.oauth = new OauthCordova();
         this.provider = new Facebook({
@@ -26,7 +24,6 @@ export class HomePage {
     }
 
     ionViewDidEnter() {
-        alert(this.profileMenu.userOnlineStatus);
         this.platform.registerBackButtonAction(() => {
             if (this.menuCtrl.isOpen()) {
                 this.menuCtrl.close();

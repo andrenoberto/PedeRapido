@@ -7,7 +7,7 @@ export class ProfileMenu {
     constructor() {
     }
 
-    autoChangeStatus() {
-        this.userOnlineStatus = !this.userOnlineStatus;
+    autoChangeStatus(status: boolean) {
+        this.userOnlineStatus = status;
     }
 }
