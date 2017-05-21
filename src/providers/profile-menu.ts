@@ -1,11 +1,10 @@
 import {Injectable} from '@angular/core';
-import {User} from "./user";
 
 @Injectable()
 export class ProfileMenu {
-    public userOnlineStatus = false;
+    public userOnlineStatus: boolean = false;
 
-    constructor(private user: User) {
+    constructor() {
     }
 
     autoChangeStatus() {
