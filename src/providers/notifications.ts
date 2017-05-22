@@ -2,12 +2,13 @@ import {Injectable} from '@angular/core';
 import 'rxjs/add/operator/map';
 import {LocalNotifications} from "@ionic-native/local-notifications";
 import {AngularFire, FirebaseListObservable} from "angularfire2";
+import {BackgroundMode} from "@ionic-native/background-mode";
 
 @Injectable()
 export class Notifications {
     private notifications: FirebaseListObservable<any>;
 
-    constructor(private angularFire: AngularFire, private localNotifications: LocalNotifications) {
+    constructor(private angularFire: AngularFire, private localNotifications: LocalNotifications, private backgroundMode: BackgroundMode) {
     }
 
     initialize() {
@@ -19,13 +20,19 @@ export class Notifications {
         });
     }
 
+    backgroundWatcher() {
+        if (this.backgroundMode.isActive()) {
+            this.scheduleNotification('Background viado!');
+        }
+    }
+
     scheduleNotification(text: string) {
         this.localNotifications.schedule({
             id: 1,
             title: "O status do seu pedido mudou!",
             text: text,
             led: 'FF0000',
-            at: new Date(new Date().getTime() + 10),
+            at: new Date(new Date().getTime()),
             icon: 'http://aux.iconpedia.net/uploads/box-big-icon-32.png'
         });
     }

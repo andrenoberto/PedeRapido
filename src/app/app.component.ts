@@ -13,6 +13,9 @@ import {OrderDone} from "../pages/order-done/order-done";
 import {UserList} from "../pages/user-list/user-list";
 import {MyOrders} from "../pages/my-orders/my-orders";
 import {BackgroundMode} from "@ionic-native/background-mode";
+import {LocalNotifications} from "@ionic-native/local-notifications";
+import {Notifications} from "../providers/notifications";
+import {Orders} from "../pages/orders/orders";
 
 @Component({
     templateUrl: 'app.html'
@@ -34,7 +37,9 @@ export class MyApp {
                 private events: Events,
                 private user: User,
                 private app: App,
-                private backgroudMode: BackgroundMode) {
+                private backgroundMode: BackgroundMode,
+                private notifications: Notifications,
+                private localNotifications: LocalNotifications) {
         this.initializeApp();
     }
 
@@ -70,7 +75,29 @@ export class MyApp {
         this.buildMenu();
 
         this.platform.ready().then(() => {
-            this.backgroudMode.enable();
+            /*
+             Background mode default actions
+             */
+            if (this.platform.is('cordova')) {
+                this.backgroundMode.enable();
+                this.backgroundMode.configure({silent: true});
+                this.backgroundMode.on('activate').subscribe(() => {
+                    this.localNotifications.schedule({
+                        id: 1,
+                        title: "back",
+                        text: 'estou nas costas usando subscribe',
+                        at: new Date(new Date().getTime() + 1),
+                        icon: 'http://aux.iconpedia.net/uploads/box-big-icon-32.png'
+                    })
+                });
+                this.backgroundMode.on('click').subscribe(() => {
+                    this.nav.setRoot(Orders);
+                });
+                this.notifications.backgroundWatcher();
+            }
+            /*
+             Other necessary stuff
+             */
             this.statusBar.styleDefault();
             this.statusBar.backgroundColorByHexString('#A01607');
             this.splashScreen.hide();
