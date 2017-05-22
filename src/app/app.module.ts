@@ -32,6 +32,7 @@ import {MyCartModule} from "../pages/my-cart/my-cart.module";
 import {OrderDoneModule} from "../pages/order-done/order-done.module";
 import {UserListModule} from "../pages/user-list/user-list.module";
 import {MyOrdersModule} from "../pages/my-orders/my-orders.module";
+import {CallNumber} from "@ionic-native/call-number";
 
 export const firebaseConfig = {
     apiKey: "UuaOTyNBVo4EtTJRkTqsFHPQTh8CvqstE0puXyDY",
@@ -86,6 +87,7 @@ export const firebaseConfig = {
         ProductListData,
         User,
         UserListData,
+        CallNumber,
         /*
          Maps
          */
