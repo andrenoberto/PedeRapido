@@ -5,6 +5,7 @@ import {OauthCordova} from "ng2-cordova-oauth/platform/cordova";
 import {CallNumber} from "@ionic-native/call-number";
 import {LocalNotifications} from "@ionic-native/local-notifications";
 import {Orders} from "../orders/orders";
+import {Notifications} from "../../providers/notifications";
 
 @Component({
     selector: 'page-home',
@@ -18,7 +19,9 @@ export class HomePage {
                 private platform: Platform,
                 private menuCtrl: MenuController,
                 private callNumber: CallNumber,
-                private localNotifications: LocalNotifications) {
+                private localNotifications: LocalNotifications,
+                private notifications: Notifications) {
+        this.notifications.initialize();
         this.oauth = new OauthCordova();
         this.provider = new Facebook({
             clientId: "295237230929584",
