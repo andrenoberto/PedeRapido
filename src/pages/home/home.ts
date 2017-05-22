@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {MenuController, NavController, Platform} from 'ionic-angular';
 import {Facebook} from "ng2-cordova-oauth/core";
 import {OauthCordova} from "ng2-cordova-oauth/platform/cordova";
-import {MyApp} from "../../app/app.component";
 
 @Component({
     selector: 'page-home',
@@ -14,9 +13,7 @@ export class HomePage {
 
     constructor(private navCtrl: NavController,
                 private platform: Platform,
-                private menuCtrl: MenuController,
-                private myApp: MyApp) {
-        this.myApp.updateProfileSideLinks();
+                private menuCtrl: MenuController) {
         this.oauth = new OauthCordova();
         this.provider = new Facebook({
             clientId: "295237230929584",
@@ -24,12 +21,7 @@ export class HomePage {
         });
     }
 
-    viewWillEnter() {
-        this.myApp.updateProfileSideLinks();
-    }
-
     ionViewDidEnter() {
-        this.myApp.updateProfileSideLinks();
         this.platform.registerBackButtonAction(() => {
             if (this.menuCtrl.isOpen()) {
                 this.menuCtrl.close();

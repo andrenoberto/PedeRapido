@@ -16,18 +16,16 @@ export class Profile {
     constructor(public user: User, public app: App, public platform: Platform, public navCtrl: NavController, public menuCtrl: MenuController) {
         this.user.initialize();
         this.profile = this.user.profile;
-        if (this.profile == null) {
-            this.navCtrl.setRoot(OAuthProvidersListPage);
-        }
     }
 
-    viewWillEnter() {
+    changePage() {
         if (this.profile == null) {
             this.navCtrl.setRoot(OAuthProvidersListPage);
         }
     }
 
     ionViewDidEnter() {
+        this.changePage();
         this.platform.registerBackButtonAction(() => {
             if (this.menuCtrl.isOpen()) {
                 this.menuCtrl.close();

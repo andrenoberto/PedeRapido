@@ -36,25 +36,11 @@ export class MyApp {
         this.initializeApp();
     }
 
-    updateProfileSideLinks() {
-        if (this.user.profile == null) {
-            this.profilePages = [
-                {title: 'Conectar-se', component: OAuthProvidersListPage, icon: 'log-in'},
-            ];
-        } else {
-            this.profilePages = [
-                {title: 'Meu Perfil', component: Profile, icon: 'contact'},
-            ];
-        }
-    }
-
     onMenuOpened() {
-        this.updateProfileSideLinks();
         this.events.publish('onMenuOpened');
     }
 
     onMenuClosed() {
-        this.updateProfileSideLinks();
         this.events.publish('onMenuClosed');
     }
 
@@ -67,6 +53,10 @@ export class MyApp {
             {title: 'Meu Carrinho', component: MyCart, icon: 'cart'},
             {title: 'Meus Pedidos', component: MyOrders, icon: 'cube'}
         ];
+        this.profilePages = [
+            {title: 'Minha Sessão', component: OAuthProvidersListPage, icon: 'log-in'},
+            {title: 'Meu Perfil', component: Profile, icon: 'contact'},
+        ];
         this.adminPages = [
             {title: 'Pedido Realizado', component: OrderDone, icon: 'home'},
             {title: 'Usuários', component: UserList, icon: 'people'},
@@ -75,7 +65,6 @@ export class MyApp {
 
     initializeApp() {
         this.user.initialize();
-        this.updateProfileSideLinks();
         this.buildMenu();
 
         this.platform.ready().then(() => {

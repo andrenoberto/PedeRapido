@@ -1,10 +1,10 @@
 import {Component} from '@angular/core';
 import {OAuthService} from '../oauth.service';
-//import {OAuthProfilePage} from "../profile/oauth-profile.page";
 import {App, MenuController, NavController, Platform} from "ionic-angular";
 import {User} from "../../../providers/user";
 import {ProductList} from "../../product-list/product-list";
 import {HomePage} from "../../home/home";
+import {OAuthProfile} from "../models/oauth-profile.model";
 
 @Component({
     templateUrl: 'oauth-providers.list.html',
@@ -13,12 +13,22 @@ import {HomePage} from "../../home/home";
 export class OAuthProvidersListPage {
     private oauthService: OAuthService;
     private nav: NavController;
+    profile: OAuthProfile;
 
     constructor(oauthService: OAuthService, public user: User, public app: App, public platform: Platform, public navCtrl: NavController, public menuCtrl: MenuController) {
         this.oauthService = oauthService;
+        this.user.initialize();
+        this.profile = this.user.profile;
+    }
+
+    changePage() {
+        if (this.profile == null) {
+            this.navCtrl.setRoot(OAuthProvidersListPage);
+        }
     }
 
     ionViewDidEnter() {
+        this.changePage();
         this.platform.registerBackButtonAction(() => {
             if (this.menuCtrl.isOpen()) {
                 this.menuCtrl.close();
