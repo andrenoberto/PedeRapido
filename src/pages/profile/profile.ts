@@ -14,7 +14,9 @@ export class Profile {
     private oauthService: OAuthService;
     profile: OAuthProfile;
 
-    constructor(public user: User, public app: App, public platform: Platform, public navCtrl: NavController, public menuCtrl: MenuController) {
+    constructor(public user: User, public app: App, public platform: Platform, public navCtrl: NavController, public menuCtrl: MenuController,
+    private oauthServ: OAuthService) {
+        this.oauthService = oauthServ;
         this.user.initialize();
         this.profile = this.user.profile;
     }
@@ -31,11 +33,10 @@ export class Profile {
         }, 100);
     }
 
-    public login(source: string) {
+    facebookLogin(source: string) {
         this.oauthService.login(source)
             .then(() => {
                 this.oauthService.getProfile().then((profile) => this.user.profile = profile);
             });
     }
-
 }
