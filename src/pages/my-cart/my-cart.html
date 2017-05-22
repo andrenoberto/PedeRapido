@@ -11,11 +11,11 @@
 
 
 <ion-content padding class="no-scroll">
-  <ion-card>
+  <ion-card color="primary">
     <ion-card-content>
       <ion-card-title color="light">Valor Total: R$ {{cart.total | number : '1.2-2'}}</ion-card-title>
       <ion-list>
-        <ion-list-header color="secondary">
+        <ion-list-header color="light">
           Detalhes do Pedido
         </ion-list-header>
         <ion-item *ngIf="cart.total <= 0">

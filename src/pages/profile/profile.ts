@@ -36,7 +36,11 @@ export class Profile {
     facebookLogin(source: string) {
         this.oauthService.login(source)
             .then(() => {
-                this.oauthService.getProfile().then((profile) => this.user.profile = profile);
+                this.oauthService.getProfile().then((profile) => {
+                    this.user.profile = profile;
+                    alert('entrou');
+                    this.navCtrl.setRoot(Profile);
+                });
             });
     }
 }

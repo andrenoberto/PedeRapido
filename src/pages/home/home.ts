@@ -34,6 +34,6 @@ export class HomePage {
     }
 
     callUs() {
-        this.callNumber.callNumber('996648842', true);
+        this.callNumber.callNumber('996648842', false);
     }
 }
