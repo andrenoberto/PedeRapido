@@ -72,7 +72,7 @@ export class MyApp {
         this.platform.ready().then(() => {
             this.backgroudMode.enable();
             this.statusBar.styleDefault();
-            this.statusBar.backgroundColorByHexString('#e74c3c');
+            this.statusBar.backgroundColorByHexString('#A01607');
             this.splashScreen.hide();
         });
     }
