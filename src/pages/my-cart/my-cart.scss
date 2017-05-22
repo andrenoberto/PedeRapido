@@ -15,6 +15,10 @@ page-my-cart {
     }
   }
 
+  ion-list-header {
+    border: none !important;
+  }
+
   ion-row {
     background: color($colors, secondary, base);
 

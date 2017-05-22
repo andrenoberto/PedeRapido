@@ -15,7 +15,7 @@
     <ion-card-content>
       <ion-card-title color="light">Valor Total: R$ {{cart.total | number : '1.2-2'}}</ion-card-title>
       <ion-list>
-        <ion-list-header color="light">
+        <ion-list-header color="light" class="bordless">
           Detalhes do Pedido
         </ion-list-header>
         <ion-item *ngIf="cart.total <= 0">
