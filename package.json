@@ -21,6 +21,7 @@
     "@angular/platform-browser": "4.0.0",
     "@angular/platform-browser-dynamic": "4.0.0",
     "@ionic-native/app-minimize": "^3.10.2",
+    "@ionic-native/background-mode": "^3.10.3",
     "@ionic-native/call-number": "^3.10.3",
     "@ionic-native/camera": "^3.6.1",
     "@ionic-native/core": "^3.6.1",

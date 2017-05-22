@@ -12,6 +12,7 @@ import {MyCart} from "../pages/my-cart/my-cart";
 import {OrderDone} from "../pages/order-done/order-done";
 import {UserList} from "../pages/user-list/user-list";
 import {MyOrders} from "../pages/my-orders/my-orders";
+import {BackgroundMode} from "@ionic-native/background-mode";
 
 @Component({
     templateUrl: 'app.html'
@@ -32,7 +33,8 @@ export class MyApp {
                 private splashScreen: SplashScreen,
                 private events: Events,
                 private user: User,
-                private app: App) {
+                private app: App,
+                private backgroudMode: BackgroundMode) {
         this.initializeApp();
     }
 
@@ -68,7 +70,9 @@ export class MyApp {
         this.buildMenu();
 
         this.platform.ready().then(() => {
+            this.backgroudMode.enable();
             this.statusBar.styleDefault();
+            this.statusBar.backgroundColorByName('blue');
             this.splashScreen.hide();
         });
     }

@@ -33,6 +33,7 @@ import {OrderDoneModule} from "../pages/order-done/order-done.module";
 import {UserListModule} from "../pages/user-list/user-list.module";
 import {MyOrdersModule} from "../pages/my-orders/my-orders.module";
 import {CallNumber} from "@ionic-native/call-number";
+import {BackgroundMode} from "@ionic-native/background-mode";
 
 export const firebaseConfig = {
     apiKey: "UuaOTyNBVo4EtTJRkTqsFHPQTh8CvqstE0puXyDY",
@@ -88,6 +89,7 @@ export const firebaseConfig = {
         User,
         UserListData,
         CallNumber,
+        BackgroundMode,
         /*
          Maps
          */
