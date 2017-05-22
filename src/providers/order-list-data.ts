@@ -1,12 +1,11 @@
 import {Injectable} from '@angular/core';
 import 'rxjs/add/operator/map';
-import {AngularFire, FirebaseListObservable} from "angularfire2";
-import {User} from "./user";
+import {AngularFire} from "angularfire2";
 
 @Injectable()
 export class OrderListData {
 
-    constructor(private angularFire: AngularFire, private user: User) {
+    constructor(private angularFire: AngularFire) {
     }
 
     getList() {

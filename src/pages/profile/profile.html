@@ -7,7 +7,7 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content color="dark" class="no-scroll">
+<ion-content color="dark" class="no-scroll" *ngIf="user.profile">
     <ion-card color="light" *ngIf="this.platform.is('cordova')">
         <img src="{{profile.photo}}"/>
         <ion-card-content>
@@ -23,7 +23,7 @@
             </p>
         </ion-card-content>
     </ion-card>
-    <div>
+    <div padding>
         <button ion-button class="button button-full" (click)="logout()">Log out</button>
     </div>
 </ion-content>

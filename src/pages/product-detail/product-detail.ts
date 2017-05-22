@@ -1,15 +1,8 @@
 import {Component} from '@angular/core';
 import {App, IonicPage, MenuController, NavController, NavParams, Platform} from 'ionic-angular';
 import {ProductList} from "../product-list/product-list";
-import {AppMinimize} from "@ionic-native/app-minimize";
 import {Cart} from "../../providers/cart";
 
-/**
- * Generated class for the ProductDetail page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
 @IonicPage()
 @Component({
     selector: 'page-product-detail',

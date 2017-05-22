@@ -1,15 +1,10 @@
 import {Component} from '@angular/core';
-import {App, IonicPage, MenuController, NavController, NavParams, Platform} from 'ionic-angular';
+import {App, IonicPage, MenuController, NavController, Platform} from 'ionic-angular';
 import {HomePage} from "../home/home";
 import {User} from "../../providers/user";
 import {OAuthProfile} from "../oauth/models/oauth-profile.model";
+import {OAuthProvidersListPage} from "../oauth/list/oauth-providers.list.page";
 
-/**
- * Generated class for the Profile page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
 @IonicPage()
 @Component({
     selector: 'page-profile',
@@ -21,6 +16,15 @@ export class Profile {
     constructor(public user: User, public app: App, public platform: Platform, public navCtrl: NavController, public menuCtrl: MenuController) {
         this.user.initialize();
         this.profile = this.user.profile;
+        if (this.profile == null) {
+            this.navCtrl.setRoot(OAuthProvidersListPage);
+        }
+    }
+
+    viewWillEnter() {
+        if (this.profile == null) {
+            this.navCtrl.setRoot(OAuthProvidersListPage);
+        }
     }
 
     ionViewDidEnter() {
