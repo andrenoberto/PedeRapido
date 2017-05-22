@@ -3,7 +3,7 @@ import {App, IonicPage, MenuController, NavController, Platform} from 'ionic-ang
 import {HomePage} from "../home/home";
 import {User} from "../../providers/user";
 import {OAuthProfile} from "../oauth/models/oauth-profile.model";
-import {OAuthProvidersListPage} from "../oauth/list/oauth-providers.list.page";
+import {OAuthService} from "../oauth/oauth.service";
 
 @IonicPage()
 @Component({
@@ -11,6 +11,7 @@ import {OAuthProvidersListPage} from "../oauth/list/oauth-providers.list.page";
     templateUrl: 'profile.html',
 })
 export class Profile {
+    private oauthService: OAuthService;
     profile: OAuthProfile;
 
     constructor(public user: User, public app: App, public platform: Platform, public navCtrl: NavController, public menuCtrl: MenuController) {
@@ -28,6 +29,13 @@ export class Profile {
                 this.navCtrl.setRoot(HomePage, {}, {animate: true, direction: 'back'});
             }
         }, 100);
+    }
+
+    public login(source: string) {
+        this.oauthService.login(source)
+            .then(() => {
+                this.oauthService.getProfile().then((profile) => this.user.profile = profile);
+            });
     }
 
 }

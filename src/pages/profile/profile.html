@@ -8,22 +8,34 @@
 </ion-header>
 
 <ion-content color="dark" class="no-scroll">
-    <ion-card color="light" *ngIf="this.platform.is('cordova')">
-        <img src="{{profile.photo}}"/>
-        <ion-card-content>
-            <ion-card-title>
-                {{profile.name}}
-            </ion-card-title>
-            <p>
-                {{profile.email}}
-            </p>
-            <p *ngIf="profile.provider">
+    <div *ngIf="user.profile">
+        <ion-card color="light" *ngIf="this.platform.is('cordova')">
+            <img src="{{profile.photo}}"/>
+            <ion-card-content>
+                <ion-card-title>
+                    {{profile.name}}
+                </ion-card-title>
+                <p>
+                    {{profile.email}}
+                </p>
+                <p *ngIf="profile.provider">
+                    <ion-icon name="logo-facebook" item-left></ion-icon>
+                    Conectado com o {{profile.provider}}
+                </p>
+            </ion-card-content>
+        </ion-card>
+        <div padding>
+            <button ion-button class="button button-full" (click)="logout()">Log out</button>
+        </div>
+    </div>
+    <div *ngIf="!user.profile">
+        <h4 padding>Entre ou registre-se usando um dos seguintes serviços para poder ver o seu perfil e ter acesso as demais
+            funcionalidades:</h4>
+        <ion-list inset>
+            <ion-item (click)="login('facebook')">
                 <ion-icon name="logo-facebook" item-left></ion-icon>
-                Conectado com o {{profile.provider}}
-            </p>
-        </ion-card-content>
-    </ion-card>
-    <div padding>
-        <button ion-button class="button button-full" (click)="logout()">Log out</button>
+                Facebook
+            </ion-item>
+        </ion-list>
     </div>
 </ion-content>
