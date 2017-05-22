@@ -24,8 +24,11 @@ export class Profile {
         }
     }
 
-    ionViewDidEnter() {
+    ionViewWillEnter() {
         this.changePage();
+    }
+
+    ionViewDidEnter() {
         this.platform.registerBackButtonAction(() => {
             if (this.menuCtrl.isOpen()) {
                 this.menuCtrl.close();

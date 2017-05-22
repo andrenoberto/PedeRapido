@@ -5,6 +5,7 @@ import {User} from "../../../providers/user";
 import {ProductList} from "../../product-list/product-list";
 import {HomePage} from "../../home/home";
 import {OAuthProfile} from "../models/oauth-profile.model";
+import {Profile} from "../../profile/profile";
 
 @Component({
     templateUrl: 'oauth-providers.list.html',
@@ -21,14 +22,17 @@ export class OAuthProvidersListPage {
         this.profile = this.user.profile;
     }
 
+    ionViewWillEnter() {
+        this.changePage();
+    }
+
     changePage() {
-        if (this.profile == null) {
-            this.navCtrl.setRoot(OAuthProvidersListPage);
+        if (this.profile != null) {
+            this.navCtrl.setRoot(Profile);
         }
     }
 
     ionViewDidEnter() {
-        this.changePage();
         this.platform.registerBackButtonAction(() => {
             if (this.menuCtrl.isOpen()) {
                 this.menuCtrl.close();
