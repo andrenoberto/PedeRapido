@@ -18,16 +18,6 @@ export class Profile {
         this.profile = this.user.profile;
     }
 
-    changePage() {
-        if (this.profile == null) {
-            this.navCtrl.setRoot(OAuthProvidersListPage);
-        }
-    }
-
-    ionViewWillEnter() {
-        this.changePage();
-    }
-
     ionViewDidEnter() {
         this.platform.registerBackButtonAction(() => {
             if (this.menuCtrl.isOpen()) {
