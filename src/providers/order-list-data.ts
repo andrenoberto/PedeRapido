@@ -1,11 +1,13 @@
 import {Injectable} from '@angular/core';
 import 'rxjs/add/operator/map';
 import {AngularFire} from "angularfire2";
+import {User} from "./user";
 
 @Injectable()
 export class OrderListData {
 
-    constructor(private angularFire: AngularFire) {
+    constructor(private angularFire: AngularFire, private user: User) {
+        this.user.initialize();
     }
 
     getList() {
@@ -21,7 +23,7 @@ export class OrderListData {
             query: {
                 orderByChild: 'email',
                 //equalTo: this.user.profile.email
-                equalTo: 'andre-noberto@hotmail.com'
+                equalTo: this.user.profile.email
             }
         })
             //.map((array) => array.reverse()) as FirebaseListObservable<any[]>;

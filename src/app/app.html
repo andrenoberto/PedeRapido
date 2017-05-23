@@ -32,24 +32,53 @@
                 <ion-icon name="basket" item-start class="icon-alignment"></ion-icon>
                 <span class="item-divider-alignment">Loja</span>
             </ion-item-divider>
-            <button class="bold" menuClose text-uppercase no-lines ion-item
-                    *ngFor="let p of storePages" (click)="openPage(p)">
-                <ion-icon [name]="p.icon" item-left color="primary"></ion-icon>
+            <!-- Store pages begin -->
+            <button class="bold" menuClose text-uppercase no-lines ion-item (click)="openPage(storePages[0])">
+                <ion-icon [name]="storePages[0].icon" item-left color="primary"></ion-icon>
                 <p ion-text color="primary">
-                    {{ p.title }}
+                    {{ storePages[0].title }}
+                </p>
+            </button>
+            <button class="bold" menuClose text-uppercase no-lines ion-item (click)="openPage(storePages[1])">
+                <ion-icon [name]="storePages[1].icon" item-left color="primary"></ion-icon>
+                <p ion-text color="primary">
+                    {{ storePages[1].title }}
+                </p>
+            </button>
+            <button *ngIf="user.profile" class="bold" menuClose text-uppercase no-lines ion-item
+                    (click)="openPage(storePages[2])">
+                <ion-icon [name]="storePages[2].icon" item-left color="primary"></ion-icon>
+                <p ion-text color="primary">
+                    {{ storePages[2].title }}
                 </p>
             </button>
             <ion-item-divider>
                 <ion-icon name="person" item-start class="icon-alignment"></ion-icon>
                 <span class="item-divider-alignment">Perfil</span>
             </ion-item-divider>
-            <button class="bold" menuClose text-uppercase no-lines ion-item
+            <!-- Store pages end -->
+            <!-- User profile pages begin -->
+            <button *ngIf="!user.profile" class="bold" menuClose text-uppercase no-lines ion-item
+                    (click)="openPage(profilePages[0])">
+                <ion-icon [name]="profilePages[0].icon" item-left color="primary"></ion-icon>
+                <p ion-text color="primary">
+                    {{profilePages[0].title}}
+                </p>
+            </button>
+            <button *ngIf="user.profile" class="bold" menuClose text-uppercase no-lines ion-item
+                    (click)="openPage(profilePages[1])">
+                <ion-icon [name]="profilePages[1].icon" item-left color="primary"></ion-icon>
+                <p ion-text color="primary">
+                    {{profilePages[1].title}}
+                </p>
+            </button>
+            <!--<button class="bold" menuClose text-uppercase no-lines ion-item
                     *ngFor="let p of profilePages" (click)="openPage(p)">
                 <ion-icon [name]="p.icon" item-left color="primary"></ion-icon>
                 <p ion-text color="primary">
                     {{ p.title }}
                 </p>
-            </button>
+            </button>-->
             <ion-item-divider>
                 <ion-icon name="settings" item-start class="icon-alignment"></ion-icon>
                 <span class="item-divider-alignment">Administração</span>
