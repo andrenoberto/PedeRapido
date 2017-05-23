@@ -18,7 +18,7 @@ export class Order {
   }
 
   initializeValues() {
-    if (this.platform.is('cordova')) {
+    if (this.platform.is('cordova') && this.user.profile) {
       this.customer = this.user.profile.name;
       this.customerEmail = this.user.profile.email;
     }

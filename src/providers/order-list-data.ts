@@ -19,14 +19,18 @@ export class OrderListData {
     }
 
     getUserList() {
-        return this.angularFire.database.list('orders', {
-            query: {
-                orderByChild: 'email',
-                //equalTo: this.user.profile.email
-                equalTo: this.user.profile.email
-            }
-        })
+        if (this.user.profile) {
+            return this.angularFire.database.list('orders', {
+                query: {
+                    orderByChild: 'email',
+                    //equalTo: this.user.profile.email
+                    equalTo: this.user.profile.email
+                }
+            })
             //.map((array) => array.reverse()) as FirebaseListObservable<any[]>;
+        } else {
+            return;
+        }
     }
 
     getSingleItem(id) {
