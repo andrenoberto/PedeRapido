@@ -29,7 +29,7 @@ export class Notifications {
             text: text,
             led: 'FF0000',
             at: new Date(new Date().getTime()),
-            icon: 'http://aux.iconpedia.net/uploads/box-big-icon-32.png'
+            icon: 'res://icon_transparant'
         });
         this.localNotifications.on('click', () => {
             this.nav.setRoot(Orders);

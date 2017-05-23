@@ -9,11 +9,11 @@ import {User} from "../providers/user";
 import {OAuthProvidersListPage} from "../pages/oauth/list/oauth-providers.list.page";
 import {Profile} from "../pages/profile/profile";
 import {MyCart} from "../pages/my-cart/my-cart";
-import {OrderDone} from "../pages/order-done/order-done";
 import {UserList} from "../pages/user-list/user-list";
 import {MyOrders} from "../pages/my-orders/my-orders";
 import {BackgroundMode} from "@ionic-native/background-mode";
 import {Notifications} from "../providers/notifications";
+import {AdministrateOrders} from "../pages/administrate-orders/administrate-orders";
 //import {LocalNotifications} from "@ionic-native/local-notifications";
 
 @Component({
@@ -65,7 +65,7 @@ export class MyApp {
             {title: 'Meu Perfil', component: Profile, icon: 'contact'},
         ];
         this.adminPages = [
-            {title: 'Pedidos Realizados', component: OrderDone, icon: 'cube'},
+            {title: 'Pedidos Realizados', component: AdministrateOrders, icon: 'cube'},
             {title: 'Usuários', component: UserList, icon: 'people'},
         ];
     }

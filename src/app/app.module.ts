@@ -36,6 +36,7 @@ import {CallNumber} from "@ionic-native/call-number";
 import {BackgroundMode} from "@ionic-native/background-mode";
 import {LocalNotifications} from "@ionic-native/local-notifications";
 import {Notifications} from "../providers/notifications";
+import {AdministrateOrdersModule} from "../pages/administrate-orders/administrate-orders.module";
 
 export const firebaseConfig = {
     apiKey: "UuaOTyNBVo4EtTJRkTqsFHPQTh8CvqstE0puXyDY",
@@ -68,7 +69,8 @@ export const firebaseConfig = {
         MyCartModule,
         OrderDoneModule,
         UserListModule,
-        MyOrdersModule
+        MyOrdersModule,
+        AdministrateOrdersModule
     ],
     bootstrap: [IonicApp],
     entryComponents: [
