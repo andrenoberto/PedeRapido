@@ -42,7 +42,9 @@ export class MyApp {
                 private headerColor: HeaderColor,
                 //private localNotifications: LocalNotifications
     ) {
-        this.splashScreen.show();
+        if (this.platform.is('cordova')) {
+            this.splashScreen.show();
+        }
         this.initializeApp();
     }
 
@@ -95,13 +97,13 @@ export class MyApp {
                  icon: 'http://aux.iconpedia.net/uploads/box-big-icon-32.png'
                  })
                  });*/
+                /*
+                 Other necessary stuff
+                 */
+                this.statusBar.styleDefault();
+                this.statusBar.backgroundColorByHexString('#C92918');
+                this.splashScreen.hide();
             }
-            /*
-             Other necessary stuff
-             */
-            this.statusBar.styleDefault();
-            this.statusBar.backgroundColorByHexString('#C92918');
-            this.splashScreen.hide();
         });
     }
 

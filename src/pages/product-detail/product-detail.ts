@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {App, IonicPage, MenuController, NavController, NavParams, Platform} from 'ionic-angular';
+import {App, IonicPage, MenuController, NavController, NavParams, Platform, ToastController} from 'ionic-angular';
 import {ProductList} from "../product-list/product-list";
 import {Cart} from "../../providers/cart";
 
@@ -22,6 +22,7 @@ export class ProductDetail {
                 private cart: Cart,
                 private menuCtrl: MenuController,
                 private platform: Platform,
+                private toastCtrl: ToastController,
                 private app: App) {
         this.product.key = this.navParams.get('key');
         this.product.total = this.navParams.get('value');
@@ -45,6 +46,15 @@ export class ProductDetail {
 
     addToCart() {
         this.cart.addItem(this.product);
+        let toast = this.toastCtrl.create({
+            message: 'Produto adicionado ao carrinho.',
+            duration: 3000,
+            position: 'bottom',
+            cssClass: 'toast-confirm',
+            showCloseButton: true,
+            closeButtonText: 'Fechar'
+        });
+        toast.present();
         this.navCtrl.setRoot(ProductList);
     }
 }

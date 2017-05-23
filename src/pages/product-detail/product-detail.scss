@@ -3,3 +3,12 @@ page-product-detail {
     border: none !important;
   }
 }
+
+.toast-message,
+div.toast-message,
+.toast-confirm {
+  color: #fff !important;
+  > div {
+    background-color: #32db64 !important;
+  }
+}
