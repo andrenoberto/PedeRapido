@@ -15,15 +15,9 @@ export class Notifications {
         this.notifications = this.getList();
         this.notifications.subscribe((data) => {
             if (data != undefined) {
-                this.scheduleNotification(data[0].$value);
+                this.scheduleNotification(data[0].status);
             }
         });
-    }
-
-    backgroundWatcher() {
-        if (this.backgroundMode.isActive()) {
-            this.scheduleNotification('Background viado!');
-        }
     }
 
     scheduleNotification(text: string) {

@@ -81,19 +81,6 @@ export class MyApp {
             if (this.platform.is('cordova')) {
                 this.backgroundMode.enable();
                 this.backgroundMode.configure({silent: true});
-                this.backgroundMode.on('activate').subscribe(() => {
-                    this.localNotifications.schedule({
-                        id: 1,
-                        title: "back",
-                        text: 'estou nas costas usando subscribe',
-                        at: new Date(new Date().getTime() + 1),
-                        icon: 'http://aux.iconpedia.net/uploads/box-big-icon-32.png'
-                    })
-                });
-                this.backgroundMode.on('click').subscribe(() => {
-                    this.nav.setRoot(Orders);
-                });
-                this.notifications.backgroundWatcher();
             }
             /*
              Other necessary stuff
