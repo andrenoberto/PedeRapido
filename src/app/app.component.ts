@@ -14,6 +14,7 @@ import {MyOrders} from "../pages/my-orders/my-orders";
 import {BackgroundMode} from "@ionic-native/background-mode";
 import {Notifications} from "../providers/notifications";
 import {AdministrateOrders} from "../pages/administrate-orders/administrate-orders";
+import {HeaderColor} from "@ionic-native/header-color";
 //import {LocalNotifications} from "@ionic-native/local-notifications";
 
 @Component({
@@ -38,8 +39,10 @@ export class MyApp {
                 private app: App,
                 private backgroundMode: BackgroundMode,
                 private notifications: Notifications,
+                private headerColor: HeaderColor,
                 //private localNotifications: LocalNotifications
-                ) {
+    ) {
+        this.splashScreen.show();
         this.initializeApp();
     }
 
@@ -82,21 +85,22 @@ export class MyApp {
                 this.notifications.initialize();
                 this.backgroundMode.enable();
                 this.backgroundMode.configure({silent: true});
+                this.headerColor.tint('#e74c3c');
                 /*this.backgroundMode.on('activate').subscribe(() => {
-                    this.localNotifications.schedule({
-                        id: 1,
-                        title: "back",
-                        text: 'estou nas costas usando subscribe',
-                        at: new Date(new Date().getTime() + 1),
-                        icon: 'http://aux.iconpedia.net/uploads/box-big-icon-32.png'
-                    })
-                });*/
+                 this.localNotifications.schedule({
+                 id: 1,
+                 title: "back",
+                 text: 'estou nas costas usando subscribe',
+                 at: new Date(new Date().getTime() + 1),
+                 icon: 'http://aux.iconpedia.net/uploads/box-big-icon-32.png'
+                 })
+                 });*/
             }
             /*
              Other necessary stuff
              */
             this.statusBar.styleDefault();
-            this.statusBar.backgroundColorByHexString('#A01607');
+            this.statusBar.backgroundColorByHexString('#C92918');
             this.splashScreen.hide();
         });
     }

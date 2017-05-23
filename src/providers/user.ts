@@ -19,7 +19,7 @@ export class User {
                 .then(profile => {
                     this.profile = profile;
                 }).catch(error => {
-                alert(error);
+                //alert(error);
             });
         }
     }

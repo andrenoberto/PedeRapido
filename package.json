@@ -27,6 +27,7 @@
     "@ionic-native/core": "^3.6.1",
     "@ionic-native/geolocation": "^3.10.2",
     "@ionic-native/google-maps": "^3.10.2",
+    "@ionic-native/header-color": "^3.10.3",
     "@ionic-native/in-app-browser": "^3.7.0",
     "@ionic-native/local-notifications": "^3.10.3",
     "@ionic-native/native-geocoder": "^3.6.1",

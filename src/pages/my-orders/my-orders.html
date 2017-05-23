@@ -7,7 +7,7 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="no-scroll">
     <ion-list no-lines>
         <ion-item *ngFor="let order of myOrders | async">
             <h2>Realizado em: {{order.createdAt | date:'dd/MM/y HH:mm'}}</h2>
