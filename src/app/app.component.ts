@@ -65,7 +65,7 @@ export class MyApp {
             {title: 'Meu Perfil', component: Profile, icon: 'contact'},
         ];
         this.adminPages = [
-            {title: 'Pedido Realizado', component: OrderDone, icon: 'home'},
+            {title: 'Pedidos Realizados', component: OrderDone, icon: 'cube'},
             {title: 'Usuários', component: UserList, icon: 'people'},
         ];
     }
