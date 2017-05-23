@@ -22,7 +22,7 @@ export class AdministrateOrders {
                 private orderListData: OrderListData,
                 private loadingMessage: LoadingMessage) {
         loadingMessage.presentGenericMessage();
-        this.orders = this.orderListData.getUserList();
+        this.orders = this.orderListData.getList();
         this.orders.subscribe(() => {
             this.loadingMessage.dismissAll();
         });
