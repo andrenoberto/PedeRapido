@@ -3,12 +3,12 @@
         <button ion-button menuToggle>
             <ion-icon name="menu"></ion-icon>
         </button>
-        <ion-title>Pedidos Realizados</ion-title>
+        <ion-title>Pedidos Em Espera</ion-title>
     </ion-navbar>
 </ion-header>
 
 <ion-content>
-    <ion-list no-lines>
+    <!--<ion-list no-lines>
         <div *ngFor="let order of orders | async">
             <ion-item *ngIf="order.status != 'Entregue'">
                 <h2>Realizado em: {{order.createdAt | date:'dd/MM/y HH:mm'}}</h2>
@@ -21,5 +21,37 @@
                 <ion-badge *ngIf="order.status == 'Entregue'" color="green" item-right>{{order.status}}</ion-badge>
             </ion-item>
         </div>
-    </ion-list>
+    </ion-list>-->
+
+    <ion-card *ngFor="let order of orders | async">
+        <!--<img src="assets/img/avatar.png" offset="100"
+             [lazyLoad]="getMapAddress(order.pos.lat, order.pos.lng)">-->
+        <img src="{{getMapAddress(order.pos.lat, order.pos.lng)}}" offset="100">
+        <!--src="assets/img/avatar.png" [lazyLoad]="getMapAddress(order.pos.lat, order.pos.lng)">-->
+        <ion-fab right top>
+            <button ion-fab>
+                <ion-icon name="pin"></ion-icon>
+            </button>
+        </ion-fab>
+
+        <ion-item color="secondary" *ngIf="order.deliveryAddress">
+            <h2 ion-text color="light" class="h2-margin">Cliente: {{order.customer}}</h2>
+            <h2 ion-text color="light" class="h2-margin">Data: {{order.createdAt | date:'dd/MM/y HH:mm'}}</h2>
+            <h2 ion-text color="light" class="h2-margin">Endereço</h2>
+            <p>{{order.deliveryAddress}}</p>
+            <p *ngFor="let item of order.items">
+                {{item.amount}}x {{item.name}}
+            </p>
+        </ion-item>
+
+        <!--<ion-item color="secondary">
+          <span class="bold" item-left ion-text color="primary" *ngIf="location">
+            <small>({{ place.distance(location, unit) }})</small>
+          </span>
+            <button ion-button item-right color="primary" (click)="goToMap()">
+                <ion-icon name="navigate"></ion-icon>
+                {{ "START" | translate }}
+            </button>
+        </ion-item>-->
+    </ion-card>
 </ion-content>
