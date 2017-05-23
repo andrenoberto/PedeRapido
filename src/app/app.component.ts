@@ -61,7 +61,7 @@ export class MyApp {
             {title: 'Meus Pedidos', component: MyOrders, icon: 'cube'}
         ];
         this.profilePages = [
-            {title: 'Minha Sessão', component: OAuthProvidersListPage, icon: 'log-in'},
+            {title: 'Conectar-se', component: OAuthProvidersListPage, icon: 'log-in'},
             {title: 'Meu Perfil', component: Profile, icon: 'contact'},
         ];
         this.adminPages = [
