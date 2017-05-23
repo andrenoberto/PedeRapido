@@ -1,10 +1,13 @@
-import {Injectable} from '@angular/core';
+import {Injectable, ViewChild} from '@angular/core';
 import 'rxjs/add/operator/map';
 import {LocalNotifications} from "@ionic-native/local-notifications";
 import {AngularFire, FirebaseListObservable} from "angularfire2";
+import {Nav} from "ionic-angular";
+import {Orders} from "../pages/orders/orders";
 
 @Injectable()
 export class Notifications {
+    @ViewChild(Nav) nav: Nav;
     private notifications: FirebaseListObservable<any>;
 
     constructor(private angularFire: AngularFire, private localNotifications: LocalNotifications) {
@@ -28,6 +31,9 @@ export class Notifications {
             at: new Date(new Date().getTime()),
             icon: 'http://aux.iconpedia.net/uploads/box-big-icon-32.png'
         });
+        this.localNotifications.on('click', () => {
+            this.nav.setRoot(Orders);
+        })
     }
 
     getList() {

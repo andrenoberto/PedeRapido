@@ -13,8 +13,8 @@ import {OrderDone} from "../pages/order-done/order-done";
 import {UserList} from "../pages/user-list/user-list";
 import {MyOrders} from "../pages/my-orders/my-orders";
 import {BackgroundMode} from "@ionic-native/background-mode";
+import {Notifications} from "../providers/notifications";
 //import {LocalNotifications} from "@ionic-native/local-notifications";
-//import {Notifications} from "../providers/notifications";
 
 @Component({
     templateUrl: 'app.html'
@@ -37,7 +37,7 @@ export class MyApp {
                 private user: User,
                 private app: App,
                 private backgroundMode: BackgroundMode,
-                //private notifications: Notifications,
+                private notifications: Notifications,
                 //private localNotifications: LocalNotifications
                 ) {
         this.initializeApp();
@@ -79,6 +79,7 @@ export class MyApp {
              Background mode default actions
              */
             if (this.platform.is('cordova')) {
+                this.notifications.initialize();
                 this.backgroundMode.enable();
                 this.backgroundMode.configure({silent: true});
                 /*this.backgroundMode.on('activate').subscribe(() => {

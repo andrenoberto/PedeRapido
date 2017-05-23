@@ -3,8 +3,6 @@ import {MenuController, NavController, Platform} from 'ionic-angular';
 import {Facebook} from "ng2-cordova-oauth/core";
 import {OauthCordova} from "ng2-cordova-oauth/platform/cordova";
 import {CallNumber} from "@ionic-native/call-number";
-import {LocalNotifications} from "@ionic-native/local-notifications";
-import {Orders} from "../orders/orders";
 
 @Component({
     selector: 'page-home',
@@ -17,16 +15,12 @@ export class HomePage {
     constructor(private navCtrl: NavController,
                 private platform: Platform,
                 private menuCtrl: MenuController,
-                private callNumber: CallNumber,
-                private localNotifications: LocalNotifications) {
+                private callNumber: CallNumber) {
         this.oauth = new OauthCordova();
         this.provider = new Facebook({
             clientId: "295237230929584",
             appScope: ["email"]
         });
-        this.localNotifications.on('click', () => {
-            this.navCtrl.setRoot(Orders);
-        })
     }
 
     ionViewDidEnter() {
