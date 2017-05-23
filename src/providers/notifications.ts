@@ -2,13 +2,12 @@ import {Injectable} from '@angular/core';
 import 'rxjs/add/operator/map';
 import {LocalNotifications} from "@ionic-native/local-notifications";
 import {AngularFire, FirebaseListObservable} from "angularfire2";
-import {BackgroundMode} from "@ionic-native/background-mode";
 
 @Injectable()
 export class Notifications {
     private notifications: FirebaseListObservable<any>;
 
-    constructor(private angularFire: AngularFire, private localNotifications: LocalNotifications, private backgroundMode: BackgroundMode) {
+    constructor(private angularFire: AngularFire, private localNotifications: LocalNotifications) {
     }
 
     initialize() {

@@ -13,9 +13,8 @@ import {OrderDone} from "../pages/order-done/order-done";
 import {UserList} from "../pages/user-list/user-list";
 import {MyOrders} from "../pages/my-orders/my-orders";
 import {BackgroundMode} from "@ionic-native/background-mode";
-import {LocalNotifications} from "@ionic-native/local-notifications";
-import {Notifications} from "../providers/notifications";
-import {Orders} from "../pages/orders/orders";
+//import {LocalNotifications} from "@ionic-native/local-notifications";
+//import {Notifications} from "../providers/notifications";
 
 @Component({
     templateUrl: 'app.html'
@@ -38,8 +37,9 @@ export class MyApp {
                 private user: User,
                 private app: App,
                 private backgroundMode: BackgroundMode,
-                private notifications: Notifications,
-                private localNotifications: LocalNotifications) {
+                //private notifications: Notifications,
+                //private localNotifications: LocalNotifications
+                ) {
         this.initializeApp();
     }
 
@@ -81,6 +81,15 @@ export class MyApp {
             if (this.platform.is('cordova')) {
                 this.backgroundMode.enable();
                 this.backgroundMode.configure({silent: true});
+                /*this.backgroundMode.on('activate').subscribe(() => {
+                    this.localNotifications.schedule({
+                        id: 1,
+                        title: "back",
+                        text: 'estou nas costas usando subscribe',
+                        at: new Date(new Date().getTime() + 1),
+                        icon: 'http://aux.iconpedia.net/uploads/box-big-icon-32.png'
+                    })
+                });*/
             }
             /*
              Other necessary stuff
