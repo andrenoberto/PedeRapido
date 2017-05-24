@@ -28,11 +28,15 @@ export class FacebookOauthProvider implements IOathProvider {
     private facebook: Facebook;
 
     constructor(http: Http,
-                config: Config,) {
+                config: Config) {
         this.http = http;
         this.config = config;
         this.facebook = new Facebook({clientId: config.facebook.clientId, appScope: config.facebook.appScope, redirectUri: config.facebook.redirectUri});
         this.cordovaOauth = new OauthCordova();
+    }
+
+    logout() {
+
     }
 
     login(): Promise<string> {

@@ -14,6 +14,10 @@ export class OAuthService {
         this.injector = injector;
     }
 
+    logout() {
+        localStorage.removeItem(this.oauthTokenKey);
+    }
+
     login(source: string): Promise<OAuthToken> {
         return this.getOAuthService(source).login().then(accessToken => {
             if (!accessToken) {

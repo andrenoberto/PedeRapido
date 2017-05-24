@@ -18,6 +18,10 @@ export class OrderListData {
         });
     }
 
+    getUnorderedList() {
+        return this.angularFire.database.list('/orders');
+    }
+
     getUserList() {
         if (this.user.profile) {
             return this.angularFire.database.list('orders', {

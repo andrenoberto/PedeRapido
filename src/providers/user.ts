@@ -23,4 +23,9 @@ export class User {
             });
         }
     }
+
+    logout() {
+        this.oauthService.logout();
+        this.profile = null;
+    }
 }

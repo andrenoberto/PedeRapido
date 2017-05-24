@@ -43,4 +43,8 @@ export class Profile {
                 });
             });
     }
+
+    logout() {
+        this.user.logout();
+    }
 }

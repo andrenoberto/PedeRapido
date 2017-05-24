@@ -28,7 +28,7 @@ export class AdministrateOrders {
                 private orderListData: OrderListData,
                 private loadingMessage: LoadingMessage) {
         loadingMessage.presentGenericMessage();
-        this.orders = this.orderListData.getList();
+        this.orders = this.orderListData.getUnorderedList();
         this.orders.subscribe((data) => {
             this.customersOrders = [];
             for (let i = 0; i < data.length; i++) {
