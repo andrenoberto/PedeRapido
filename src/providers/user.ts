@@ -31,7 +31,7 @@ export class User {
                         this.aux.subscribe((data) => {
                             if (data[0] != undefined) {
                                 this.admin = data[0].admin;
-                                this.delivery = data[0].deliveryman;
+                                this.delivery = data[0].delivery;
                                 if (this.admin || this.delivery) {
                                     this.adminArea = true;
                                     this.ordersPage = true;
@@ -55,7 +55,7 @@ export class User {
                 this.aux.subscribe((data) => {
                     if (data[0] != undefined) {
                         this.admin = data[0].admin;
-                        this.delivery = data[0].deliveryman;
+                        this.delivery = data[0].delivery;
                         if (this.admin || this.delivery) {
                             this.adminArea = true;
                             this.ordersPage = true;
