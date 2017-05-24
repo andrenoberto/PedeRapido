@@ -3,7 +3,7 @@
         <ion-toolbar class="menu-toolbar" *ngIf="user.profile">
             <ion-item color="primary" no-lines>
                 <ion-avatar item-left>
-                    <img src="assets/img/logo.png" offset="100"
+                    <img src="assets/img/avatar.png" offset="100"
                          [lazyLoad]="user.profile.photo ? user.profile.photo : ''">
                 </ion-avatar>
                 <span color="light">{{user.profile.first_name}}</span>
@@ -12,7 +12,7 @@
         <ion-toolbar class="menu-toolbar" *ngIf="!user.profile">
             <ion-item color="primary" no-lines>
                 <ion-avatar item-left>
-                    <img src="assets/img/avatar.png">
+                    <img src="assets/img/logo.png">
                 </ion-avatar>
                 <span color="light">Pede Rápido</span>
             </ion-item>
