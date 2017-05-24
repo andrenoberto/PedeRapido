@@ -39,5 +39,5 @@
       </ion-list>
     </ion-card-content>
   </ion-card>
-  <button ion-button round (click)="goToCheckout()" *ngIf="cart.items.length > 0">Realizar Pedido</button>
+  <button ion-button round (click)="goToCheckout()" *ngIf="cart.items.length > 0 && user.profile">Realizar Pedido</button>
 </ion-content>

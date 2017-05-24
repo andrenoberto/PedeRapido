@@ -4,6 +4,7 @@ import {Cart} from "../../providers/cart";
 import {Checkout} from "../checkout/checkout";
 import {Order} from "../../providers/order";
 import {HomePage} from "../home/home";
+import {User} from "../../providers/user";
 
 @IonicPage()
 @Component({
@@ -12,8 +13,15 @@ import {HomePage} from "../home/home";
 })
 export class MyCart {
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, public cart: Cart, public alertCtrl: AlertController, public order: Order,
-                public platform: Platform, public app: App, public menuCtrl: MenuController) {
+    constructor(private navCtrl: NavController,
+                private navParams: NavParams,
+                private cart: Cart,
+                private alertCtrl: AlertController,
+                private order: Order,
+                private platform: Platform,
+                private app: App,
+                private menuCtrl: MenuController,
+                private user: User) {
     }
 
     ionViewDidEnter() {
