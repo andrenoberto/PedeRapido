@@ -80,15 +80,20 @@
                 </p>
             </button>-->
             <!-- User profile pages end -->
-            <ion-item-divider>
+            <ion-item-divider *ngIf="user.admin || user.delivery || !platform.is('cordova')">
                 <ion-icon name="settings" item-start class="icon-alignment"></ion-icon>
                 <span class="item-divider-alignment">Administração</span>
             </ion-item-divider>
-            <button class="bold" menuClose text-uppercase no-lines ion-item
-                    *ngFor="let p of adminPages" (click)="openPage(p)">
-                <ion-icon [name]="p.icon" item-left color="primary"></ion-icon>
+            <button *ngIf="user.delivery || user.admin || !platform.is('cordova')" class="bold" menuClose text-uppercase no-lines ion-item (click)="openPage(adminPages[0])">
+                <ion-icon [name]="adminPages[0].icon" item-left color="primary"></ion-icon>
                 <p ion-text color="primary">
-                    {{ p.title }}
+                    {{ adminPages[0].title }}
+                </p>
+            </button>
+            <button *ngIf="user.admin || !platform.is('cordova')" class="bold" menuClose text-uppercase no-lines ion-item (click)="openPage(adminPages[1])">
+                <ion-icon [name]="adminPages[1].icon" item-left color="primary"></ion-icon>
+                <p ion-text color="primary">
+                    {{ adminPages[1].title }}
                 </p>
             </button>
         </ion-list>

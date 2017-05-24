@@ -19,7 +19,7 @@
         <ion-item-sliding *ngFor="let user of users | async">
             <ion-item>
                 <h2>{{user.name}}</h2>
-                <p>Login: {{user.username}}</p>
+                <p>Email: {{user.profile.email}}</p>
                 <p>
                     Permissões administrativas:
                     <span *ngIf="user.admin">sim</span>
@@ -27,8 +27,8 @@
                 </p>
                 <p>
                     Entrega de produtos:
-                    <span *ngIf="user.deliveryman">sim</span>
-                    <span *ngIf="!user.deliveryman">não</span>
+                    <span *ngIf="user.delivery">sim</span>
+                    <span *ngIf="!user.delivery">não</span>
                 </p>
             </ion-item>
             <ion-item-options side="right">
@@ -36,23 +36,7 @@
                     <ion-icon name="more"></ion-icon>
                     Mais
                 </button>
-                <button ion-button color="danger" (click)="removeUser(user.$key)">
-                    <ion-icon name="trash"></ion-icon>
-                    Excluir
-                </button>
-                <button ion-button color="primary" (click)="updateUser(user)">
-                    <ion-icon name="hammer"></ion-icon>
-                    Editar
-                </button>
             </ion-item-options>
         </ion-item-sliding>
     </ion-list>
 </ion-content>
-
-<ion-footer>
-    <ion-toolbar color="secondary" text-center>
-        <button ion-button outline (click)="addUser()">
-            + Usuário
-        </button>
-    </ion-toolbar>
-</ion-footer>

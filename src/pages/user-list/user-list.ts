@@ -1,12 +1,12 @@
 import {Component} from '@angular/core';
-import {AngularFire, FirebaseListObservable} from "angularfire2";
+import {FirebaseListObservable} from "angularfire2";
 import {
     ActionSheetController, AlertController, App, IonicPage, MenuController, NavController, NavParams,
     Platform
 } from 'ionic-angular';
 import {UserListData} from "../../providers/user-list-data";
 import {LoadingMessage} from "../../providers/loading-message";
-import CryptoJS from 'crypto-js';
+//import CryptoJS from 'crypto-js';
 import {HomePage} from "../home/home";
 
 /**
@@ -23,7 +23,7 @@ import {HomePage} from "../home/home";
 export class UserList {
     private users: FirebaseListObservable<any>;
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, public userListData: UserListData, public loadingMessage: LoadingMessage, public alertCtrl: AlertController, public angularFire: AngularFire, public actionSheetCtrl: ActionSheetController,
+    constructor(public navCtrl: NavController, public navParams: NavParams, public userListData: UserListData, public loadingMessage: LoadingMessage, public alertCtrl: AlertController, public actionSheetCtrl: ActionSheetController,
                 public app: App, public platform: Platform, public menuCtrl: MenuController) {
         loadingMessage.presentGenericMessage();
         this.users = userListData.getList();
@@ -63,7 +63,7 @@ export class UserList {
         actionSheet.present();
     }
 
-    addUser() {
+    /*addUser() {
         let prompt = this.alertCtrl.create({
             title: 'Novo usuário',
             message: 'Informe os dados do usuário a ser cadastrado.',
@@ -130,7 +130,7 @@ export class UserList {
             ]
         });
         prompt.present();
-    }
+    }*/
 
     updateAdministrativePermissions(user) {
         let prompt = this.alertCtrl.create({
@@ -149,7 +149,7 @@ export class UserList {
                     label: 'Entrega de produtos?',
                     type: 'checkbox',
                     value: 'deliveryman',
-                    checked: user.deliveryman
+                    checked: user.delivery
                 }
             ],
             buttons: [
@@ -179,11 +179,11 @@ export class UserList {
                         }
                         if (deliveryManAccess) {
                             this.users.update(user.$key, {
-                                deliveryman: deliveryManAccess
+                                delivery: deliveryManAccess
                             });
                         } else {
                             this.users.update(user.$key, {
-                                deliveryman: false
+                                delivery: false
                             });
                         }
                     }
@@ -193,7 +193,7 @@ export class UserList {
         prompt.present();
     }
 
-    updateUser(user) {
+    /*updateUser(user) {
         let prompt = this.alertCtrl.create({
             title: 'Editar Usuário',
             message: 'Atualize as informações deste usuário.',
@@ -243,6 +243,6 @@ export class UserList {
             ]
         });
         prompt.present();
-    }
+    }*/
 
 }

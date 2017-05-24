@@ -1,22 +1,27 @@
 <ion-header>
-  <ion-navbar color="primary">
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Home</ion-title>
-  </ion-navbar>
+    <ion-navbar color="primary">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Home</ion-title>
+    </ion-navbar>
 </ion-header>
 
 <ion-content color="dark" padding class="no-scroll">
-  <h3>Pede Rápido</h3>
-
-  <p>
-    Confira nossa loja virtual e realize seu pedido agora mesmo!
-  </p>
-
-  <button ion-button round menuToggle>Navegar</button>
-  <button ion-button round (click)="scheduleNotification()">Notificar</button>
-  <button ion-button round (click)="callUs()" icon-left>
-    <ion-icon name="call"></ion-icon> Fale Conosco
-  </button>
+    <h3 text-center color="light">Pede Rápido</h3>
+    <ion-card color="light">
+        <img src="assets/img/logo.png"/>
+        <ion-card-content>
+            <ion-card-title text-center>
+                Horário de funcionameto
+            </ion-card-title>
+            <p text-center>7h00 às 11h00 & 13h00 às 17h00</p>
+        </ion-card-content>
+    </ion-card>
+    <div>
+        <button ion-button round class="button button-full" (click)="callUs()" icon-left>
+            <ion-icon name="call"></ion-icon>
+            Fale Conosco
+        </button>
+    </div>
 </ion-content>

@@ -12,6 +12,7 @@ import {User} from "../../providers/user";
     templateUrl: 'my-cart.html',
 })
 export class MyCart {
+    public userProfile;
 
     constructor(private navCtrl: NavController,
                 private navParams: NavParams,
@@ -22,6 +23,8 @@ export class MyCart {
                 private app: App,
                 private menuCtrl: MenuController,
                 private user: User) {
+        this.user.initialize();
+        this.userProfile = this.user;
     }
 
     ionViewDidEnter() {
