@@ -1,12 +1,10 @@
 <ion-header>
-
     <ion-navbar color="primary">
         <button ion-button menuToggle>
             <ion-icon name="menu"></ion-icon>
         </button>
         <ion-title>Usuários</ion-title>
     </ion-navbar>
-
 </ion-header>
 
 
@@ -19,7 +17,7 @@
         <ion-item-sliding *ngFor="let user of users | async">
             <ion-item>
                 <h2>{{user.name}}</h2>
-                <p>Email: {{user.profile.email}}</p>
+                <p>Email: {{user.email}}</p>
                 <p>
                     Permissões administrativas:
                     <span *ngIf="user.admin">sim</span>

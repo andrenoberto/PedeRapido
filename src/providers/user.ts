@@ -11,6 +11,9 @@ export class User {
     profile: OAuthProfile = null;
     public admin = false;
     public delivery = false;
+    public ordersPage = false;
+    public adminPage = false;
+    public adminArea = false;
     private aux: FirebaseListObservable<any>;
 
     constructor(private oauthService: OAuthService, private userListData: UserListData) {
@@ -28,7 +31,18 @@ export class User {
                         this.aux.subscribe((data) => {
                             if (data[0] != undefined) {
                                 this.admin = data[0].admin;
-                                this.delivery = data[0].deliveryman
+                                this.delivery = data[0].deliveryman;
+                                if (this.admin || this.delivery) {
+                                    this.adminArea = true;
+                                    this.ordersPage = true;
+                                    if (this.admin) {
+                                        this.adminPage = true;
+                                    }
+                                } else {
+                                    this.ordersPage = false;
+                                    this.adminPage = false;
+                                    this.adminArea = false;
+                                }
                             }
                         });
                     }
@@ -41,7 +55,18 @@ export class User {
                 this.aux.subscribe((data) => {
                     if (data[0] != undefined) {
                         this.admin = data[0].admin;
-                        this.delivery = data[0].deliveryman
+                        this.delivery = data[0].deliveryman;
+                        if (this.admin || this.delivery) {
+                            this.adminArea = true;
+                            this.ordersPage = true;
+                            if (this.admin) {
+                                this.adminPage = true;
+                            }
+                        } else {
+                            this.ordersPage = false;
+                            this.adminPage = false;
+                            this.adminArea = false;
+                        }
                     }
                 });
             }

@@ -26,11 +26,11 @@
     <div *ngFor="let order of customersOrders">
         <ion-card>
             <img src="{{getMapAddress(order.pos.lat, order.pos.lng)}}" offset="100">
-            <ion-fab right top>
+            <!--<ion-fab right top>
                 <button ion-fab>
                     <ion-icon name="pin"></ion-icon>
                 </button>
-            </ion-fab>
+            </ion-fab>-->
 
             <ion-item color="secondary">
                 <span class="bold" item-left ion-text color="light">
@@ -39,7 +39,7 @@
                         <ion-spinner></ion-spinner>
                     </div>
                 </span>
-                <button ion-button item-right color="primary" (click)="goToMap()">
+                <button ion-button item-right color="primary" (click)="goToMap(order.pos.lat, order.pos.lng, order.customer, order.email)">
                     <ion-icon name="navigate"></ion-icon>
                     Iniciar
                 </button>
@@ -52,24 +52,24 @@
             </ion-card-header>
 
             <ion-list no-lines>
-                <button ion-item (click)="goToMap()">
+                <button ion-item>
                     <ion-icon name="time" item-left color="primary"></ion-icon>
                     Data: {{order.createdAt | date:'dd/MM/y HH:mm'}}
                 </button>
 
-                <button ion-item (click)="onCall()">
+                <button ion-item>
                     <ion-icon name="map" item-left color="primary"></ion-icon>
                     {{order.deliveryAddress}}
                 </button>
 
-                <button ion-item (click)="openUrl()">
+                <button ion-item>
                     <ion-icon name="cube" item-left color="primary"></ion-icon>
                     <p *ngFor="let item of order.items">
                         {{item.amount}}x {{item.name}}
                     </p>
                 </button>
 
-                <button ion-item (click)="openUrl()">
+                <button ion-item>
                     <ion-icon name="call" item-left color="primary"></ion-icon>
                     {{order.phone}}
                 </button>

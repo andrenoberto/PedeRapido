@@ -38,6 +38,7 @@ import {LocalNotifications} from "@ionic-native/local-notifications";
 import {Notifications} from "../providers/notifications";
 import {AdministrateOrdersModule} from "../pages/administrate-orders/administrate-orders.module";
 import {HeaderColor} from "@ionic-native/header-color";
+import {LaunchNavigator} from "@ionic-native/launch-navigator";
 
 export const firebaseConfig = {
     apiKey: "UuaOTyNBVo4EtTJRkTqsFHPQTh8CvqstE0puXyDY",
@@ -98,6 +99,7 @@ export const firebaseConfig = {
         LocalNotifications,
         Notifications,
         HeaderColor,
+        LaunchNavigator,
         /*
          Maps
          */

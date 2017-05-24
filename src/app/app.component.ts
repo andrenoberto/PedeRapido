@@ -86,7 +86,10 @@ export class MyApp {
             if (this.platform.is('cordova')) {
                 this.notifications.initialize();
                 this.backgroundMode.enable();
-                this.backgroundMode.configure({silent: true});
+                this.backgroundMode.setDefaults({
+                    title: 'Em execução',
+                    text: 'O Pede Rápdio continua em execução e te notificará sobre alterações em seus pedidos.'
+                });
                 this.headerColor.tint('#e74c3c');
                 /*this.backgroundMode.on('activate').subscribe(() => {
                  this.localNotifications.schedule({

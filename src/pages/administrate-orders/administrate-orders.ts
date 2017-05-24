@@ -6,6 +6,8 @@ import {LoadingMessage} from "../../providers/loading-message";
 import {OrderListData} from "../../providers/order-list-data";
 import {Geolocation} from '@ionic-native/geolocation';
 import {Http} from "@angular/http";
+import {LaunchNavigator} from "@ionic-native/launch-navigator";
+import {Notifications} from "../../providers/notifications";
 
 @IonicPage()
 @Component({
@@ -17,6 +19,8 @@ export class AdministrateOrders {
     private orders: FirebaseListObservable<any>;
     private customersOrders;
     private subscription;
+    private lat;
+    private lng;
 
     constructor(public navCtrl: NavController,
                 public navParams: NavParams,
@@ -25,7 +29,9 @@ export class AdministrateOrders {
                 private app: App,
                 private http: Http,
                 private geolocation: Geolocation,
+                private launchNavigator: LaunchNavigator,
                 private orderListData: OrderListData,
+                private notifications: Notifications,
                 private loadingMessage: LoadingMessage) {
         loadingMessage.presentGenericMessage();
         this.orders = this.orderListData.getUnorderedList();
@@ -36,9 +42,9 @@ export class AdministrateOrders {
                 this.customersOrders[i].spinner = true;
                 this.subscription = this.geolocation.watchPosition()
                     .subscribe(position => {
-                        let lat: string = position.coords.latitude.toString();
-                        let lng: string = position.coords.longitude.toString();
-                        this.calculateDistance(lat, lng, data[i].pos.lat, data[i].pos.lng, data[i].$key);
+                        this.lat = position.coords.latitude.toString();
+                        this.lng = position.coords.longitude.toString();
+                        this.calculateDistance(this.lat, this.lng, data[i].pos.lat, data[i].pos.lng, data[i].$key);
                     });
             }
             this.loadingMessage.dismissAll();
@@ -67,6 +73,19 @@ export class AdministrateOrders {
             this.customersOrders[index].distanceValue = distanceDetails.rows[0].elements[0].distance.value;
             this.customersOrders[index].duration = distanceDetails.rows[0].elements[0].duration.text;
             this.customersOrders[index].spinner = false;
+        });
+    }
+
+    goToMap(destLat, destLng, customer, email) {
+        /*this.notifications.notifications.push({
+            email: email,
+            status: customer + " seu pedido está em rota!"
+        });*/
+        let myPos: string = this.lat + ', ' + this.lng;
+        this.launchNavigator.navigate([destLat, destLng], {
+            start: myPos,
+            startName: 'Você',
+            destinationName: customer
         });
     }
 
