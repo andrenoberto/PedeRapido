@@ -41,17 +41,6 @@ export class AdministrateOrders {
                         this.calculateDistance(lat, lng, data[i].pos.lat, data[i].pos.lng, data[i].$key);
                     });
             }
-            /*
-            Sort results
-             */
-            this.customersOrders.sort(function compare(a, b) {
-                if (a.distanceValue < b.distanceValue) {
-                    return -1;
-                } else if (a.distanceValue > b.distanceValue) {
-                    return 1;
-                }
-                return 0;
-            });
             this.loadingMessage.dismissAll();
         });
     }
