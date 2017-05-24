@@ -23,35 +23,55 @@
         </div>
     </ion-list>-->
 
-    <ion-card *ngFor="let order of customersOrders">
-        <!--<img src="assets/img/avatar.png" offset="100"
-             [lazyLoad]="getMapAddress(order.pos.lat, order.pos.lng)">-->
-        <img src="{{getMapAddress(order.pos.lat, order.pos.lng)}}" offset="100">
-        <!--src="assets/img/avatar.png" [lazyLoad]="getMapAddress(order.pos.lat, order.pos.lng)">-->
-        <ion-fab right top>
-            <button ion-fab>
-                <ion-icon name="pin"></ion-icon>
-            </button>
-        </ion-fab>
+    <div *ngFor="let order of customersOrders">
+        <ion-card>
+            <img src="{{getMapAddress(order.pos.lat, order.pos.lng)}}" offset="100">
+            <ion-fab right top>
+                <button ion-fab>
+                    <ion-icon name="pin"></ion-icon>
+                </button>
+            </ion-fab>
 
-        <ion-item color="secondary" *ngIf="order.deliveryAddress">
-            <h2 ion-text color="light" class="h2-margin">Cliente: {{order.customer}}</h2>
-            <h2 ion-text color="light" class="h2-margin">Data: {{order.createdAt | date:'dd/MM/y HH:mm'}}</h2>
-            <h2 ion-text color="light" class="h2-margin">Endereço</h2>
-            <p>{{order.deliveryAddress}}</p>
-            <p *ngFor="let item of order.items">
-                {{item.amount}}x {{item.name}}
-            </p>
-        </ion-item>
+            <ion-item color="secondary">
+                <span class="bold" item-left ion-text color="light">
+                    <small>({{order.distance}}, {{order.duration}})</small>
+                </span>
+                <button ion-button item-right color="primary" (click)="goToMap()">
+                    <ion-icon name="navigate"></ion-icon>
+                    Iniciar
+                </button>
+            </ion-item>
+        </ion-card>
 
-        <ion-item color="secondary">
-          <span class="bold" item-left ion-text color="primary" *ngIf="location">
-            <small>({{order.distance}})</small>
-          </span>
-            <button ion-button item-right color="primary" (click)="goToMap()">
-                <ion-icon name="navigate"></ion-icon>
-                Iniciar
-            </button>
-        </ion-item>
-    </ion-card>
+        <ion-card class="card-secondary">
+            <ion-card-header>
+                <span ion-text color="light">Cliente: {{order.customer}}</span>
+            </ion-card-header>
+
+            <ion-list no-lines>
+                <button ion-item (click)="goToMap()">
+                    <ion-icon name="time" item-left color="primary"></ion-icon>
+                    Data: {{order.createdAt | date:'dd/MM/y HH:mm'}}
+                </button>
+
+                <button ion-item (click)="onCall()">
+                    <ion-icon name="map" item-left color="primary"></ion-icon>
+                    {{order.deliveryAddress}}
+                </button>
+
+                <button ion-item (click)="openUrl()">
+                    <ion-icon name="cube" item-left color="primary"></ion-icon>
+                    <p *ngFor="let item of order.items">
+                        {{item.amount}}x {{item.name}}
+                    </p>
+                </button>
+
+                <button ion-item (click)="openUrl()">
+                    <ion-icon name="call" item-left color="primary"></ion-icon>
+                    {{order.phone}}
+                </button>
+
+            </ion-list>
+        </ion-card>
+    </div>
 </ion-content>
