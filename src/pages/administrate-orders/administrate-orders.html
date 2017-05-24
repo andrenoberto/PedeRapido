@@ -23,7 +23,7 @@
         </div>
     </ion-list>-->
 
-    <ion-card *ngFor="let order of orders | async">
+    <ion-card *ngFor="let order of customersOrders">
         <!--<img src="assets/img/avatar.png" offset="100"
              [lazyLoad]="getMapAddress(order.pos.lat, order.pos.lng)">-->
         <img src="{{getMapAddress(order.pos.lat, order.pos.lng)}}" offset="100">
@@ -44,14 +44,14 @@
             </p>
         </ion-item>
 
-        <!--<ion-item color="secondary">
+        <ion-item color="secondary">
           <span class="bold" item-left ion-text color="primary" *ngIf="location">
-            <small>({{ place.distance(location, unit) }})</small>
+            <small>({{order.distance}})</small>
           </span>
             <button ion-button item-right color="primary" (click)="goToMap()">
                 <ion-icon name="navigate"></ion-icon>
-                {{ "START" | translate }}
+                Iniciar
             </button>
-        </ion-item>-->
+        </ion-item>
     </ion-card>
 </ion-content>

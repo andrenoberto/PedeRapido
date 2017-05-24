@@ -18,7 +18,6 @@ import {Order} from "../../providers/order";
 export class GenericMap {
     public map: GoogleMap;
     posCords: LatLng = new LatLng(0, 0);
-    isViewLoaded: boolean;
     searching: any = false;
 
     constructor(public navCtrl: NavController,
