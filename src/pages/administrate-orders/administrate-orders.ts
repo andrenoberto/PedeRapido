@@ -33,6 +33,7 @@ export class AdministrateOrders {
             this.customersOrders = [];
             for (let i = 0; i < data.length; i++) {
                 this.customersOrders[i] = data[i];
+                this.customersOrders[i].spinner = true;
                 this.subscription = this.geolocation.watchPosition()
                     .subscribe(position => {
                         let lat: string = position.coords.latitude.toString();
@@ -40,6 +41,17 @@ export class AdministrateOrders {
                         this.calculateDistance(lat, lng, data[i].pos.lat, data[i].pos.lng, data[i].$key);
                     });
             }
+            /*
+            Sort results
+             */
+            this.customersOrders.sort(function compare(a, b) {
+                if (a.distanceValue < b.distanceValue) {
+                    return -1;
+                } else if (a.distanceValue > b.distanceValue) {
+                    return 1;
+                }
+                return 0;
+            });
             this.loadingMessage.dismissAll();
         });
     }
@@ -63,7 +75,9 @@ export class AdministrateOrders {
 
             let index = this.customersOrders.findIndex(order => order.$key == key);
             this.customersOrders[index].distance = distanceDetails.rows[0].elements[0].distance.text;
+            this.customersOrders[index].distanceValue = distanceDetails.rows[0].elements[0].distance.value;
             this.customersOrders[index].duration = distanceDetails.rows[0].elements[0].duration.text;
+            this.customersOrders[index].spinner = false;
         });
     }
 

@@ -34,7 +34,10 @@
 
             <ion-item color="secondary">
                 <span class="bold" item-left ion-text color="light">
-                    <small>({{order.distance}}, {{order.duration}})</small>
+                    <small *ngIf="!order.spinner">({{order.distance}}, {{order.duration}})</small>
+                    <div class="spinner-container" *ngIf="order.spinner">
+                        <ion-spinner></ion-spinner>
+                    </div>
                 </span>
                 <button ion-button item-right color="primary" (click)="goToMap()">
                     <ion-icon name="navigate"></ion-icon>

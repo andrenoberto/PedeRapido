@@ -22,6 +22,19 @@ page-administrate-orders {
     margin-bottom: 0.5em !important;
   }
 
+  .spinner-container {
+    width: 100%;
+    text-align: center;
+  }
+
+  circle {
+    stroke: #fff !important;
+  }
+
+  .spinner {
+    stroke: #fff !important;
+  }
+
   ion-slides {
     height: auto;
   }
