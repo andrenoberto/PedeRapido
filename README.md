@@ -7,4 +7,4 @@ Since this idea is pretty abstract this can be easily adpted to others services 
 
 This all has been built with help of Ionic 2 Framework and Apache Cordova.
 
-Built for a University project.
+Built for an University project.
